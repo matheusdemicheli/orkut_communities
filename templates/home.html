@@ -1,0 +1,29 @@
+{% extends 'master.html' %}
+{% load endless %}
+{% load staticfiles %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="title" class="text-center container">
+        <img src="{% static 'img/orkut_login.jpg' %}">
+        <h1 id="subtitle">Relembre os bons tempos. Encontre as comunidades que marcaram a sua vida.
+            <small><a id="help" href="{% url 'help' %}" target="_blank">Não consegue encontrar?</a></small>
+        </h1>
+        <input id="find-input" class="form-control" placeholder="Pesquise por uma comunidade"></input>
+    </div>
+
+    <div id="results" class="container"></div>
+
+    <script src="{{ STATIC_URL }}js/jquery-1.11.2.min.js"></script>
+    <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+    <script>
+        $.endlessPaginate({
+            paginateOnScroll: true,
+            paginateOnScrollMargin: 20
+        });
+    </script>
+    <script src="{% static 'js/results.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,60 @@
+#title {
+    margin-top: 20px;
+}
+
+#help {
+    color: #EB218F;
+}
+
+#find-input {
+    padding-left: 45px;
+    background: url("../img/search.png") no-repeat scroll 8px 3px / 27px auto #fff;
+}
+
+#statistics {
+    color: #EB218F;
+    margin-top: 7px;
+}
+
+#subtitle {
+    font-size: 17px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+div.result {
+    clear: both;
+    min-height: 194px;
+}
+
+div.result:hover {
+    background-color: #F1F1F1;
+}
+
+div.result > div.container-img {
+    float: left;
+    margin-right: 15px;
+    min-height: 179px;
+}
+
+div.result > div.container-img > img {
+    width: 164px;
+    max-height: 164px;
+}
+
+div.result > p.description {
+    color: #000;
+}
+
+div.endless_container {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+input.fixed-search {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 10%;
+}

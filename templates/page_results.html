@@ -1,0 +1,15 @@
+{% load endless %}
+
+{% paginate results %}
+    {% for result in results %}
+        <a href="{{ result.url }}">
+            <div class="result">
+                <img src="{{ result.url_image }}">
+                <p>Name: {{ result.name }}</p>
+                {% autoescape on %}
+                    <p>Description: {{ result.description|truncatechars:1000 }}</p>
+                {% endautoescape %}
+            </div>
+        </a>
+    {% endfor %}
+{% show_more %}

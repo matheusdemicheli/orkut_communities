@@ -1,0 +1,27 @@
+{% load endless %}
+{% load humanize %}
+
+{% if not loading_more_results %}
+    <p id="statistics">{{ results.count|intcomma }} resultados para a pesquisa "{{ term }}"</p>
+{% endif %}
+
+{% paginate results %}
+    {% for result in results %}
+        <a href="{{ result.url }}" target="_blank">
+            <div class="result box">
+
+                <div class="container-img">
+                    <img src="{{ result.url_image }}">
+                </div>
+
+                <p><b>{{ result.name }}</b></p>
+                <p class="description">{{ result.description|striptags|truncatewords:100 }}</p>
+
+            </div>
+        </a>
+    {% empty %}
+        <div class="result">
+            <p><b>Nenhuma comunidade encontrada.</b></p>
+        </div>
+    {% endfor %}
+{% show_more %}

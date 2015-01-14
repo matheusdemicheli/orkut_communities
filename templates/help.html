@@ -1,0 +1,26 @@
+{% extends 'master.html' %}
+{% load staticfiles %}
+
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/help.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container text-center">
+        <h1 id="help-title">Ajuda</h1>
+    </div>
+    <div class="container">
+        <div class="box">
+            <h3 class="question">Não consegue encontrar uma comunidade?</h3>
+            <p class"answer">Você pode não encontrar uma comunidade específica por duas razões:</p>
+            <ul>
+                <li><b>A comunidade não era pública no momento da desativação do Orkut</b>: Para que uma comunidade ficasse disponível no arquivo de comunidades do Orkut, era necessário tornar essa comunidade pública antes da desativação do Orkut, como noticiado no <a href="http://blog.orkut.com/2014/06/adeus-ao-orkut.html">blog do orkut</a>.</li>
+                <li><b>Nem todas as comunidades públicas podem ser acessadas pelo site do orkut</b>: Infelizmente, o site do orkut apresenta alguns problemas, impossibilitando que todas as comunidades que eram públicas no momento da desativação do Orkut sejam encontradas. Esse problema já foi <a href="https://productforums.google.com/forum/?utm_medium=email&utm_source=footer#!category-topic/google-plus-pt/firefox/yoB_npLkltI">reportado para o Google</a> e assim que for solucionado ficarão disponíveis para busca.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container text-center container-image">
+        <img src="{% static 'img/bad_server.jpg' %}">
+    </div>
+{% endblock %}
