@@ -1,1 +1,1 @@
-This repository contains the code for the website orkutcomunidades.com.br
+This repository contains the code for the website ohttp://www.orkutcomunidades.com.br
