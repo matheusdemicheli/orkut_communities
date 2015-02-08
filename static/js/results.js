@@ -24,17 +24,23 @@ function calculate_container_img_size(){
 function loadResults(){
 
     obj = $('#find-input');
+    img_search = $('#img-input-search');
+    img_search.css('display', 'block');
+
+    img_search.offset({
+        top: obj.offset().top + 5,
+        left: obj.offset().left + obj.width() - img_search.width()
+    });
 
     $.ajax({
         type: "GET",
-        url: "results/" + obj.val(),
+        url: "results/" + obj.val() + "/",
 
         success:function(data) {
              document.getElementById("results").innerHTML = data;
+             img_search.css('display', 'none');
         }
     })
-
-    $('#find-input-bottom').val(obj.value);
 }
 
 

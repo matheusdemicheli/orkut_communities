@@ -1,11 +1,7 @@
 {% load endless %}
 {% load humanize %}
 
-{% if not loading_more_results %}
-    <p id="statistics">{{ results.count|intcomma }} resultados para a pesquisa "{{ term }}"</p>
-{% endif %}
-
-{% paginate results %}
+{% lazy_paginate results %}
     {% for result in results %}
         <a href="{{ result.url }}" target="_blank">
             <div class="result box">

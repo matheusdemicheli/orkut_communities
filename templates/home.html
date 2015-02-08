@@ -12,7 +12,8 @@
         <h1 id="subtitle">Relembre os bons tempos. Encontre as comunidades que marcaram a sua vida.
             <small><a id="help" href="{% url 'help' %}" target="_blank">Não consegue encontrar?</a></small>
         </h1>
-        <input id="find-input" class="form-control" placeholder="Pesquise por uma comunidade"></input>
+        <input id="find-input" class="form-control" placeholder="Pesquise por uma comunidade que começa por..."></input>
+        <img src="{{ STATIC_URL }}img/loading.gif" alt="loading" id="img-input-search"/>
     </div>
 
     <div id="results" class="container"></div>

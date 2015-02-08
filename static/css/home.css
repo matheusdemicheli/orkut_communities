@@ -22,6 +22,12 @@
     margin-top: 20px;
 }
 
+#img-input-search {
+    position: absolute;
+    display: none;
+    width: 26px;
+}
+
 div.result {
     clear: both;
     min-height: 194px;
@@ -58,3 +64,4 @@ input.fixed-search {
     bottom: 0;
     width: 10%;
 }
+
