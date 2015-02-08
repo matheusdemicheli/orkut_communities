@@ -11,6 +11,11 @@
     background: url("../img/search.png") no-repeat scroll 8px 3px / 27px auto #fff;
 }
 
+#find-input:focus {
+    border-color: #e05699;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #e05699
+}
+
 #statistics {
     color: #EB218F;
     margin-top: 7px;
@@ -63,5 +68,6 @@ input.fixed-search {
     right: 0;
     bottom: 0;
     width: 10%;
+    border-color: #E05699;
 }
 
