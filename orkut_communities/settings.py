@@ -110,3 +110,8 @@ TEMPLATE_CONTEXT_PROCESSORS += (
 ENDLESS_PAGINATION_LOADING = (
     '<img src="%simg/loading.gif" alt="loading" class="text-center"/>' % STATIC_URL
 )
+
+try:
+    from settings_local import *
+except ImportError:
+    pass
