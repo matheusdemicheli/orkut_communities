@@ -41,7 +41,6 @@ def results(request, term,
     else:
         db = db % letters[index]
 
-    from IPython import embed; embed()
     Community.objects._db = db
 
     results = Community.objects.filter(name__istartswith=term)
