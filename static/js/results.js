@@ -32,15 +32,26 @@ function loadResults(){
         left: obj.offset().left + obj.width() - img_search.width()
     });
 
-    $.ajax({
-        type: "GET",
-        url: "results/" + obj.val() + "/",
-
-        success:function(data) {
-             document.getElementById("results").innerHTML = data;
-             img_search.css('display', 'none');
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            document.getElementById("results").innerHTML = xmlhttp.responseText;
+            img_search.css('display', 'none');
         }
-    })
+    }
+    xmlhttp.open("GET", "results/" + obj.val() + "/", true);
+    xmlhttp.send();
+
+    //$.ajax({
+    //    type: "GET",
+//        url: "results/" + obj.val() + "/",
+//
+//        success:function(data) {
+//             document.getElementById("results").innerHTML = data;
+//             img_search.css('display', 'none');
+//        }
+//    })
+
 }
 
 
