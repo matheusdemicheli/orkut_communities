@@ -1,9 +1,12 @@
+from multiprocessing.pool import ThreadPool
+
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
 from endless_pagination.decorators import page_template
+
 from find.models import Community
-from django.db.models import Q
+
 
 def home(request):
     """
@@ -12,6 +15,13 @@ def home(request):
     return render_to_response('home.html', {'results': []},
                               context_instance=RequestContext(request))
 
+def search(database, term):
+    """
+    Make a search in specific database.
+    """
+    manager = Community.objects.db_manager(database)
+    return manager.filter(name__icontains=term)
+
 
 @page_template('results.html')
 def results(request, term,
@@ -19,31 +29,21 @@ def results(request, term,
     """
     Return the search's results.
     """
-    #terms = term.split(" ")
-    #results = Community.objects.all()
-
-    # More than 2 terms for search is very slow.
-    #if len(terms) > 2:
-        # Garanted at least two terms consectives.
-        #filter_terms = Q(name__icontains='%s %s' % (terms[0], terms[1]))
-    #filter_terms = Q()
-    #for separeted_term in terms:
-        #filter_terms |= Q(name__icontains=separeted_term)
-    #else:
-    #    filter_terms = Q(name__icontains=term)
-
     db = 'db_%s'
-    letters = 'abcdefghijklmnopqrstuvxyz'
-    first_letter = term[0].lower()
-    index = letters.find(first_letter)
-    if index < 0:
-        db = db % '#'
-    else:
-        db = db % letters[index]
-
-    Community.objects._db = db
+    letters = '#abcdefghijklmnopqrstuvxyz'
+    letters = 'ac'
     
-    results = Community.objects.filter(name__istartswith=term)
+    threads = []
+    pool = ThreadPool(processes=26)
+    results = Community.objects.none()
+
+    for letter in letters:
+        database = db % letter
+        thread = pool.apply_async(search, (database, term,))
+        threads.append(thread)
+
+    for thread in threads:
+        results |= thread.get()
 
     context = {
         'results': results,
